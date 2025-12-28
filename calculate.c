@@ -21,6 +21,7 @@ void calculate(void) {
     scanf("%s",s);
     char*sPtr=&s[0];
     char* fPtr;
+
     //here spaces are allowed, that is one thing.
 
     /****************Checking if expression is valid*******************/
@@ -114,86 +115,87 @@ void calculate(void) {
     if( strstr(sPtr,"(") != NULL ){/***********For expressions with paranthesis involved.*********** */
         //DO ANALYZE THIS CHUNK COMPLETELY....
 
-//      char *cPtr=NULL;
-//      cPtr = strstr(sPtr,"(");
+     char *cPtr=NULL;
+     cPtr = strstr(sPtr,"(");/*the first paranthesis in the entire expression.*/
 
-//     while(strstr(sPtr,"(") != NULL){
-//         sPtr = strstr(sPtr,"(");
-//     }
+    while(strstr(sPtr,"(") != NULL){
+        sPtr = strstr(sPtr,"(");
+    }
   
-//     /*After this loop sPtr is at innermost paranthesis.*/
+    /*After this loop sPtr is at innermost paranthesis.*/
+//I am here!!!!
 
-// while(sPtr != cPtr){
-//         fPtr = sPtr;
-//         sPtr++;
-//          while( (int)*sPtr != ')' ){
+while(sPtr != cPtr){
+        fPtr = sPtr;
+        sPtr++;
+         while( (int)*sPtr != ')' ){
 
-//         if( (int)*sPtr != ' ' ){
-//             sPtr++;
-//             continue;
-//         }
-//         if( charToIntConverter2((int)*sPtr) != 1){
-//             p=charToIntConverter2((int)*sPtr);
-//             sPtr++;
-//             continue;
-//         }
-//         if( (int)*sPtr == (int)'+' ){
-//                 p = p + (int)strtol(sPtr,&sPtr,10);
-//                 continue;
-//         }
-//         if( (int)*sPtr == (int)'-' ){
-//                 p = p - (int)strtol(sPtr,&sPtr,10);
-//                 continue; 
-//         }
-//         if( (int)*sPtr == (int)'(' ){
-//             while(*sPtr == ')'){
-//                 sPtr++;
-//             }
+        if( (int)*sPtr != ' ' ){
+            sPtr++;
+            continue;
+        }
+        if( charToIntConverter2((int)*sPtr) != 1 ){
+            p=charToIntConverter2((int)*sPtr);
+            sPtr++;
+            continue;
+        }
+        if( (int)*sPtr == (int)'+' ){
+                p = p + (int)strtol(sPtr,&sPtr,10);
+                continue;
+        }
+        if( (int)*sPtr == (int)'-' ){
+                p = p - (int)strtol(sPtr,&sPtr,10);
+                continue; 
+        }
+        if( (int)*sPtr == (int)'(' ){
+            while(*sPtr == ')'){
+                sPtr++;
+            }
 
-//         }
+        }
 
-//     }
+    }
 
-//        while(sPtr == fPtr){
-//             sPtr--;
-//         }
-//         /*now sPtr would be at the "(" that we just evaluated.*/
-//         while(*sPtr == '('){
-//             sPtr--;
-//         }
+       while(sPtr == fPtr){
+            sPtr--;
+        }
+        /*now sPtr would be at the "(" that we just evaluated.*/
+        while(*sPtr == '('){
+            sPtr--;
+        }
 
 
-// }
-// /*Once all the paranthesis is evaluated(which is achieved by the above while loop) do the following*/
+}
+/*Once all the paranthesis is evaluated(which is achieved by the above while loop) do the following*/
 
-// sPtr = &s[0];
-//     for(int i=0; s[i] != '\0'; i++){
-//         if( (int)*sPtr != ' ' ){
-//             sPtr++;
-//             continue;
-//         }
+sPtr = &s[0];
+    for(int i=0; s[i] != '\0'; i++){
+        if( (int)*sPtr != ' ' ){
+            sPtr++;
+            continue;
+        }
 
-//         if( (int)*sPtr == (int)'(' ){
-//             while(*sPtr == ')'){
-//                 sPtr++;
-//             }
+        if( (int)*sPtr == (int)'(' ){
+            while(*sPtr == ')'){
+                sPtr++;
+            }
 
-//         }
-//         if( charToIntConverter2((int)*sPtr) != 1){
-//             p=charToIntConverter2((int)*sPtr);
-//             sPtr++;
-//             continue;
-//         }
-//         if( (int)*sPtr == (int)'+' ){
-//                 p = p + (int)strtol(sPtr,&sPtr,10);
-//                 continue;
-//         }
-//         if( (int)*sPtr == (int)'-' ){
-//                 p = p - (int)strtol(sPtr,&sPtr,10);
-//                 continue; 
-//         }
-//     }
-// printf("%d\n",p);
+        }
+        if( charToIntConverter2((int)*sPtr) != 1){
+            p=charToIntConverter2((int)*sPtr);
+            sPtr++;
+            continue;
+        }
+        if( (int)*sPtr == (int)'+' ){
+                p = p + (int)strtol(sPtr,&sPtr,10);
+                continue;
+        }
+        if( (int)*sPtr == (int)'-' ){
+                p = p - (int)strtol(sPtr,&sPtr,10);
+                continue; 
+        }
+    }
+printf("%d\n",p);
 
     }  else{/***********For expressions without paranthesis involved.*********** */
         sPtr = &s[0];
